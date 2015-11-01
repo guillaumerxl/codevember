@@ -1,0 +1,25 @@
+// MIXINS
+@mixin centeredWithSize($width, $height) {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: $width;
+  height: $height;
+}
+
+@mixin clearfix() {
+  content: "";
+  visibility: hidden;
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+@mixin hardAcc() {
+  @include transform(translateZ(0));
+  @include backface-visibility(hidden);
+  @include perspective(1000);
+}
