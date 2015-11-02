@@ -136,6 +136,7 @@ class Three {
 
   addListeners() {
 
+    document.getElementById("upload").style.opacity = 1;
     document.getElementById("upload").addEventListener("change", this.upload.bind( this ), false);
 
   }
