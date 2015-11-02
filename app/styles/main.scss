@@ -27,3 +27,11 @@ canvas {
 	color: white;
 	text-align: center;
 }
+
+#upload {
+	position: absolute;
+	bottom: 0;
+	width: 200px;
+	left: calc( 50% - 100px );
+	z-index: 9;
+}

@@ -16,6 +16,8 @@ class Three {
     this.heightSegments = 32;
     this.perturbation = 0.0001;
 
+    this.addListeners();
+
     this.vertexShader = glslify('../../vertex-shaders/three.vert');
 
     this.fragmentShader = glslify('../../fragment-shaders/three.frag');
@@ -91,6 +93,50 @@ class Three {
   getMesh() {
 
     return this.mesh;
+
+  }
+
+  upload() {
+
+    let upload = document.getElementById("upload");
+
+    let file = upload.files[ 0 ];
+
+    let image = document.createElement( 'img' );
+
+    let oFReader = new FileReader();
+
+    oFReader.onload = (evt) => {
+        console.log(evt.target.result );
+
+        image.src = evt.target.result;
+        this.texture = new THREE.Texture( image );
+
+        console.log( this.texture );
+        this.texture.needsUpdate = true;
+        this.material.uniforms["picture"].value = this.texture;
+
+        this.scene.remove( this.mesh );
+        let geometry = new THREE.PlaneGeometry(this.texture.image.width, this.texture.image.height);
+
+        this.geometry = geometry;
+
+        this.mesh = new THREE.Mesh( this.geometry, this.material );
+        this.mesh.position.z = 2500;
+        this.mesh.position.y = 710;
+
+        this.mesh.rotation.x = -0.3;
+        this.scene.add( this.mesh );
+       
+    };
+
+    oFReader.readAsDataURL( file );
+
+  }
+
+  addListeners() {
+
+    document.getElementById("upload").addEventListener("change", this.upload.bind( this ), false);
 
   }
 
