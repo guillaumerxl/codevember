@@ -1,5 +1,6 @@
 import { One } from './one';
 import { Two } from './two';
+import { Three } from './three';
 
 let Controls = require('orbit-controls');
 
@@ -69,11 +70,13 @@ class Scene {
 
         this.animate();
 
+        console.log(this.camera);
+
     }
 
     day() {
 
-        this.day = new Two( this.scene, this.renderer );
+        this.day = new Three( this.scene, this.renderer );
 
         this.objects.push( this.day );
 
@@ -98,11 +101,11 @@ class Scene {
 
     render() {
 
-        const position = this.camera.position.toArray();
-        const direction = this.target.toArray();
-        this.controls.update(position, direction);
-        this.camera.position.fromArray(position);
-        this.camera.lookAt(this.target.fromArray(direction));
+        // const position = this.camera.position.toArray();
+        // const direction = this.target.toArray();
+        // this.controls.update(position, direction);
+        // this.camera.position.fromArray(position);
+        // this.camera.lookAt(this.target.fromArray(direction));
 
 
 

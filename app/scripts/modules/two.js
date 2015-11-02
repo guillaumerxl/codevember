@@ -12,21 +12,16 @@ class Two {
 
 
     this.active = false;
-    this.radius = 15;
-    this.widthSegments = 32;
-    this.heightSegments = 32;
-    this.perturbation = 0.0001;
 
-    this.vertexShader = glslify('../../vertex-shaders/simple.vert');
+    this.vertexShader = glslify('../../vertex-shaders/two.vert');
 
-    this.fragmentShader = glslify('../../fragment-shaders/simple.frag');
+    this.fragmentShader = glslify('../../fragment-shaders/two.frag');
 
     this.camera =  new THREE.CubeCamera(1, 1000, 256);
     this.camera.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
 
     this.scene.add( this.camera );
 
-    // this.webcam =  document.getElementById("camera");
     this.video = document.getElementById("video");
     this.c1 = document.getElementById("c1");
     this.ctx1 = this.c1.getContext("2d");
@@ -36,7 +31,6 @@ class Two {
 
         navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia ||
                 navigator.mozGetUserMedia || navigator.msGetUserMedia;
-        // this.webcam.onchange = this.updateWebcam.bind( this );
         navigator.getUserMedia({
             video: true, 
             audio: false
@@ -92,15 +86,6 @@ class Two {
     this.texture.minFilter = THREE.LinearFilter;
     this.texture.magFilter = THREE.LinearFilter;
 
-    this.vertexShader = glslify('../../vertex-shaders/two.vert');
-
-    this.fragmentShader = glslify('../../fragment-shaders/two.frag');
-    
-    // this.floorMaterial = new THREE.MeshBasicMaterial({ 
-    //     map: this.texture, 
-    //     side:THREE.DoubleSide 
-    // });
-
     this.floorMaterial = new THREE.ShaderMaterial({
         uniforms: { 
             video: {type: 't', value: this.texture},
@@ -115,7 +100,6 @@ class Two {
     this.floor = new THREE.Mesh( this.floorGeometry, this.floorMaterial );
     this.floor.position.z = -100;
 
-    // floor.rotation.x = Math.PI / 2;
     this.scene.add(this.floor);
 
     this.material = new THREE.MeshBasicMaterial({
