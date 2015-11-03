@@ -1,5 +1,3 @@
-#pragma glslify: curlNoise = require(glsl-curl-noise)
-
 varying vec2 vUv;
 
 uniform float time;

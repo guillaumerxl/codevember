@@ -22,7 +22,7 @@ class Three {
 
     this.fragmentShader = glslify('../../fragment-shaders/three.frag');
 
-    new THREE.TextureLoader().load('images/me.png', ( texture ) => {
+    new THREE.TextureLoader().load('http://img0.mxstatic.com/wallpapers/8b17e07b7e33a8afce1621c13c9edfe5_large.jpeg', ( texture ) => {
 
         this.texture = texture;
 

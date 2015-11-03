@@ -76,7 +76,7 @@ class Scene {
 
     day() {
 
-        this.day = new Two( this.scene, this.renderer );
+        this.day = new Three( this.scene, this.renderer );
 
         this.objects.push( this.day );
 
@@ -101,13 +101,28 @@ class Scene {
 
     render() {
 
+        // if ( this.camera.position.x >= 100 ) {
+        //     this.camera.position.x = 100;
+        // } 
+
+        // if (this.camera.position.x <= -100) {
+        //     this.camera.position.x = -100;
+        // }
+
+        // if ( this.camera.position.y != -22 ) {
+        //     this.camera.position.y = -22;
+        // } 
+        
+        // if ( this.camera.position.z != -76 ) {
+        //     this.camera.position.z = -76;
+        // } 
+        
         const position = this.camera.position.toArray();
         const direction = this.target.toArray();
+
         this.controls.update(position, direction);
         this.camera.position.fromArray(position);
         this.camera.lookAt(this.target.fromArray(direction));
-
-
 
         this.renderer.render( this.scene, this.camera );    
     }

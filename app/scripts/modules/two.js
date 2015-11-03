@@ -39,11 +39,13 @@ class Two {
         ( e ) => {
             console.log("error", e);
             document.getElementById("info").innerHTML = "This experiment needs a webcam!<br> This video is just a fallback.";
+            this.video.crossOrigin = "Anonymous";
             this.video.src = "videos/video.webm";
         });
 
     } else {
         document.getElementById("info").innerHTML = "This experiment needs a webcam!<br> This video is just a fallback.";
+        this.video.crossOrigin = "Anonymous";
         this.video.src = "videos/video.webm";
     }
 
@@ -122,6 +124,7 @@ class Two {
   }
 
   computeFrame() {
+
 
     this.ctx1.drawImage(this.video, 0, 0, this.width, this.height);
 
